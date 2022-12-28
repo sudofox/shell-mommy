@@ -4,6 +4,10 @@ Inspired by Gankra/cargo-mommy.
 
 This is a shell script that provides a `mommy` function which emulates a nurturing and supportive figure. The `mommy` function can be used to offer positive and negative responses to a user's actions, depending on the exit status of the command that is passed to it.
 
+By default, the text will be output in a light pink to stderr. You can change this to a light blue if you find that more encouraging.
+
+I hope this will serve to improve the efficiency of your workflow and general mental health. Please use responsibly.
+
 ## Installation
 
 To use the `mommy` function, you can source the `shell-mommy.sh` script in your current shell or add it to your `~/.bashrc` file to have it available every time you open a new terminal.
