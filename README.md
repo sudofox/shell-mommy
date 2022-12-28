@@ -19,6 +19,12 @@ To use the `mommy` function, you can source the `shell-mommy.sh` script in your 
 . /path/to/shell-mommy.sh
 ```
 
+If you'd like it to always show a message after each command, you can define a custom `PROMPT_COMMAND` like so:
+
+```
+export PROMPT_COMMAND="mommy \\$\\(exit \$?\\); $PROMPT_COMMAND"
+```
+
 ## Configuration
 
 The `mommy` function has several customizable options that can be set using environment variables:
@@ -74,7 +80,5 @@ mommy ls
 
 ## TODO
 
-I'd like to be able to make it run from PROMPT_COMMAND, so that it can be used in a more interactive way.
-
-Additionally, I might add a way to turn off "praise" (positive) output to only give encouragement (negative) output.
+- I might add a way to turn off "praise" (positive) output to only give encouragement (negative) output.
 
