@@ -21,6 +21,24 @@ The `mommy` function has several customizable options that can be set using envi
 - `SHELL_MOMMYS_ROLES`: Sets the role that `mommy` will have. The default value is "mommy".
 - `SHELL_MOMMYS_COLOR`: Sets the color of the text output by `mommy`. The default value is a light pink color.
 
+To add multiple possible values, separate them with a forward slash, for example:
+
+```sh
+export SHELL_MOMMYS_LITTLE="child/girl/boy"
+# ...
+$ mommy ls
+README.md  shell-mommy.sh
+awe, what a good boy~
+mommy knew you could do it~ ❤️
+$ mommy ls
+README.md  shell-mommy.sh
+good girl~
+mommy's so proud of you~ ❤️
+$ mommy ls
+README.md  shell-mommy.sh
+mommy thinks her litle child earned a big hug~ ❤️
+```
+
 ## Usage
 
 To use the `mommy` function, simply pass a command as an argument and `mommy` will provide a supportive response based on the exit status of the command. Depending on the exit status, `mommy` will provide a response of praise or encouragement.
