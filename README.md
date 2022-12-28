@@ -33,6 +33,7 @@ The `mommy` function has several customizable options that can be set using envi
 - `SHELL_MOMMYS_PRONOUNS`: Sets the pronouns that `mommy` will use to refer to itself. The default value is "her".
 - `SHELL_MOMMYS_ROLES`: Sets the role that `mommy` will have. The default value is "mommy".
 - `SHELL_MOMMYS_COLOR`: Sets the color of the text output by `mommy`. The default value is a light pink color.
+- `SHELL_MOMMYS_ONLY_NEGATIVE`: If set to `true`, `mommy` will provide encouragement (on non-zero exit status) but not praise. This will keep clutter down if you intend to use `mommy` as a `PROMPT_COMMAND`.
 
 To add multiple possible values, separate them with a forward slash, for example:
 
@@ -77,8 +78,3 @@ mommy ls
 # Output:
 # That's a good kiddo~ ❤️
 ```
-
-## TODO
-
-- I might add a way to turn off "praise" (positive) output to only give encouragement (negative) output.
-
