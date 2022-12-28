@@ -1,6 +1,6 @@
-# shell-mommy
+# sudofox/shell-mommy
 
-Inspired by Gankra/cargo-mommy.
+Inspired by [Gankra/cargo-mommy](https://github.com/Gankra/cargo-mommy)
 
 This is a shell script that provides a `mommy` function which emulates a nurturing and supportive figure. The `mommy` function can be used to offer positive and negative responses to a user's actions, depending on the exit status of the command that is passed to it.
 
