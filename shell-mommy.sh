@@ -39,7 +39,6 @@ mommy() {
     "MOMMYS_ROLE knows you're trying your best~ ❤️"
     "MOMMYS_ROLE loves you, and is here to support you~ ❤️"
     "MOMMYS_ROLE still loves you no matter what~ ❤️"
-    "oh no did MOMMYS_ROLE's little AFFECTIONATE_TERM make a mess~? ❤️"
     "You're doing your best, and that's all that matters to MOMMYS_ROLE~ ❤️"
     "MOMMYS_ROLE is always here to encourage you~ ❤️"
   )
