@@ -34,6 +34,7 @@ The `mommy` function has several customizable options that can be set using envi
 - `SHELL_MOMMYS_ROLES`: Sets the role that `mommy` will have. The default value is "mommy".
 - `SHELL_MOMMYS_COLOR`: Sets the color of the text output by `mommy`. The default value is a light pink color.
 - `SHELL_MOMMYS_ONLY_NEGATIVE`: If set to `true`, `mommy` will provide encouragement (on non-zero exit status) but not praise. This will keep clutter down if you intend to use `mommy` as a `PROMPT_COMMAND`.
+- `SHELL_MOMMYS_NEGATIVE_RESPONSES`/`SHELL_MOMMYS_POSITIVE_RESPONSES`: Sets the possible responses that `mommy` will use. This should be in the form of a bash array and will override the default responses. Want Samuel L. Jackson to chastise or compliment you? [Now you can!](https://github.com/sudofox/shell-mommy/issues/5#issuecomment-1381029744)
 
 To add multiple possible values, separate them with a forward slash, for example:
 

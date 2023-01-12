@@ -77,7 +77,14 @@ mommy() {
   if [[ "${SHELL_MOMMYS_ONLY_NEGATIVE:-}" == "true" ]]; then
     DEF_ONLY_NEGATIVE="true"
   fi
-
+  # if the array is set for positive/negative responses, overwrite it
+  if [[ -n "${SHELL_MOMMYS_POSITIVE_RESPONSES:-}" ]]; then
+    POSITIVE_RESPONSES=("${SHELL_MOMMYS_POSITIVE_RESPONSES[@]}")
+  fi
+  if [[ -n "${SHELL_MOMMYS_NEGATIVE_RESPONSES:-}" ]]; then
+    NEGATIVE_RESPONSES=("${SHELL_MOMMYS_NEGATIVE_RESPONSES[@]}")
+  fi
+  
   # split a string on forward slashes and return a random element
   pick_word() {
     IFS='/' read -ra words <<<"$1"
