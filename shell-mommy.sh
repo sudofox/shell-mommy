@@ -53,7 +53,7 @@ mommy() {
     "I'm so proud of you, my love~ ❤️"
     "MOMMYS_ROLE is so proud of you~ ❤️"
     "MOMMYS_ROLE loves seeing MOMMYS_PRONOUN little AFFECTIONATE_TERM succeed~ ❤️"
-    "MOMMYS_ROLE thinks MOMMYS_PRONOUN litle AFFECTIONATE_TERM earned a big hug~ ❤️"
+    "MOMMYS_ROLE thinks MOMMYS_PRONOUN little AFFECTIONATE_TERM earned a big hug~ ❤️"
     "that's a good AFFECTIONATE_TERM~ ❤️"
     "you did an amazing job, my dear~ ❤️"
     "you're such a smart cookie~ ❤️"
