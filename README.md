@@ -51,7 +51,7 @@ good girl~
 mommy's so proud of you~ ❤️
 $ mommy ls
 README.md  shell-mommy.sh
-mommy thinks her litle child earned a big hug~ ❤️
+mommy thinks her little child earned a big hug~ ❤️
 ```
 
 ## Usage
