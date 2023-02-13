@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # sudofox/shell-mommy.sh
 
 mommy() {
@@ -55,27 +54,27 @@ you're such a smart cookie~ ❤️"
 
   # allow for overriding of default words (IF ANY SET)
 
-  if [ -n "${SHELL_MOMMYS_LITTLE:-}" ]; then
+  if [ -n "$SHELL_MOMMYS_LITTLE" ]; then
     DEF_WORDS_LITTLE="${SHELL_MOMMYS_LITTLE}"
   fi
-  if [ -n "${SHELL_MOMMYS_PRONOUNS:-}" ]; then
+  if [ -n "$SHELL_MOMMYS_PRONOUNS" ]; then
     DEF_WORDS_PRONOUNS="${SHELL_MOMMYS_PRONOUNS}"
   fi
-  if [ -n "${SHELL_MOMMYS_ROLES:-}" ]; then
+  if [ -n "$SHELL_MOMMYS_ROLES" ]; then
     DEF_WORDS_ROLES="${SHELL_MOMMYS_ROLES}"
   fi
-  if [ -n "${SHELL_MOMMYS_COLOR:-}" ]; then
+  if [ -n "$SHELL_MOMMYS_COLOR" ]; then
     DEF_MOMMY_COLOR="${SHELL_MOMMYS_COLOR}"
   fi
   # allow overriding to true
-  if [ "${SHELL_MOMMYS_ONLY_NEGATIVE:-}" == "true" ]; then
+  if [ "$SHELL_MOMMYS_ONLY_NEGATIVE" = "true" ]; then
     DEF_ONLY_NEGATIVE="true"
   fi
   # if the variable is set for positive/negative responses, overwrite it
-  if [ -n "${SHELL_MOMMYS_POSITIVE_RESPONSES:-}" ]; then
+  if [ -n "$SHELL_MOMMYS_POSITIVE_RESPONSES" ]; then
     POSITIVE_RESPONSES="$SHELL_MOMMYS_POSITIVE_RESPONSES"
   fi
-  if [ -n "${SHELL_MOMMYS_NEGATIVE_RESPONSES:-}" ]; then
+  if [ -n "$SHELL_MOMMYS_NEGATIVE_RESPONSES" ]; then
     NEGATIVE_RESPONSES="$SHELL_MOMMYS_NEGATIVE_RESPONSES"
   fi
   
@@ -86,9 +85,9 @@ you're such a smart cookie~ ❤️"
 
   pick_response() { # given a response type, pick an entry from the list
 
-    if [ "$1" == "positive" ]; then
+    if [ "$1" = "positive" ]; then
       element=$(echo "$POSITIVE_RESPONSES" | shuf | sed 1q)
-    elif [ "$1" == "negative" ]; then
+    elif [ "$1" = "negative" ]; then
       element=$(echo "$NEGATIVE_RESPONSES" | shuf | sed 1q)
     else
       echo "Invalid response type: $1"
@@ -118,7 +117,7 @@ you're such a smart cookie~ ❤️"
   success() {
     (
       # if we're only supposed to show negative responses, return
-      if [ "$DEF_ONLY_NEGATIVE" == "true" ]; then
+      if [ "$DEF_ONLY_NEGATIVE" = "true" ]; then
         return 0
       fi
       # pick_response for the response type
