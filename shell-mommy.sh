@@ -84,22 +84,34 @@ mommy() {
   if [[ -n "${SHELL_MOMMYS_NEGATIVE_RESPONSES:-}" ]]; then
     NEGATIVE_RESPONSES=("${SHELL_MOMMYS_NEGATIVE_RESPONSES[@]}")
   fi
-  
+
+  # generate a random base 10 number using /dev/urandom
+  random() {
+    rd_number=$(LC_CTYPE=C tr -cd '[:digit:]' < /dev/urandom | head -c 6)
+    # 10# is used to force the number to be considered as base 10, otherwise a number starting
+    # with `08` will fail in bash
+    echo "10#$rd_number"
+  }
+
   # split a string on forward slashes and return a random element
   pick_word() {
-    IFS='/' read -ra words <<<"$1"
-    index=$(($RANDOM % ${#words[@]}))
-    echo "${words[$index]}"
+    if [[ -n "$ZSH_VERSION" ]]; then
+      words=(${(@s:/:)1})
+    else
+      words=(${1//\// })
+    fi
+    index=$(($(random) % ${#words[@]}))
+    echo "${words[@]:$index:1}"
   }
 
   pick_response() { # given a response type, pick an entry from the array
 
-    if [ "$1" == "positive" ]; then
-      index=$(($RANDOM % ${#POSITIVE_RESPONSES[@]}))
-      element=${POSITIVE_RESPONSES[$index]}
-    elif [ "$1" == "negative" ]; then
-      index=$(($RANDOM % ${#NEGATIVE_RESPONSES[@]}))
-      element=${NEGATIVE_RESPONSES[$index]}
+    if [[ "$1" == "positive" ]]; then
+      index=$(($(random) % ${#POSITIVE_RESPONSES[@]}))
+      element=${POSITIVE_RESPONSES[@]:$index:1}
+    elif [[ "$1" == "negative" ]]; then
+      index=$(($(random) % ${#NEGATIVE_RESPONSES[@]}))
+      element=${NEGATIVE_RESPONSES[@]:$index:1}
     else
       echo "Invalid response type: $1"
       exit 1
@@ -128,7 +140,7 @@ mommy() {
   success() {
     (
       # if we're only supposed to show negative responses, return
-      if [ "$DEF_ONLY_NEGATIVE" == "true" ]; then
+      if [[ "$DEF_ONLY_NEGATIVE" == "true" ]]; then
         return 0
       fi
       # pick_response for the response type
