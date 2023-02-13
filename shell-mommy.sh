@@ -81,7 +81,7 @@ you're such a smart cookie~ ❤️"
   
   # split a string on forward slashes and return a random element
   pick_word() {
-    echo "$1" | sed 's/\//\n/g' | shuf | sed 1q
+    echo "$1" | sed 's/\/\//\n/g' | shuf | sed 1q
   }
 
   pick_response() { # given a response type, pick an entry from the list
@@ -107,9 +107,9 @@ you're such a smart cookie~ ❤️"
     pronoun="$(pick_word "${DEF_WORDS_PRONOUNS}")"
     role="$(pick_word "${DEF_WORDS_ROLES}")"
     # sub in the terms, store in variable
-    response="$(echo "${response//AFFECTIONATE_TERM/$affectionate_term}")"
-    response="$(echo "${response//MOMMYS_PRONOUN/$pronoun}")"
-    response="$(echo "${response//MOMMYS_ROLE/$role}")"
+    response="$(echo "$response" | sed "s/AFFECTIONATE_TERM/$affectionate_term/g")"
+    response="$(echo "$response" | sed "s/MOMMYS_PRONOUN/$pronoun/g")"
+    response="$(echo "$response" | sed "s/MOMMYS_ROLE/$role"/g)"
     # we have string literal newlines in the response, so we need to printf it out
     # print faint and colorcode
     printf "${DEF_MOMMY_COLOR}$response${COLORS_RESET}\n"
