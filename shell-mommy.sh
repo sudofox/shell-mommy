@@ -80,7 +80,7 @@ you're such a smart cookie~ ❤️"
   
   # split a string on forward slashes and return a random element
   pick_word() {
-    echo "$1" | sed 's/\/\//\n/g' | shuf | sed 1q
+    echo "$1" | shuf | sed 1q
   }
 
   pick_response() { # given a response type, pick an entry from the list
