@@ -94,10 +94,10 @@ mommy() {
 
   pick_response() { # given a response type, pick an entry from the array
 
-    if [ "$1" == "positive" ]; then
+    if [[ "$1" == "positive" ]]; then
       index=$(($RANDOM % ${#POSITIVE_RESPONSES[@]}))
       element=${POSITIVE_RESPONSES[$index]}
-    elif [ "$1" == "negative" ]; then
+    elif [[ "$1" == "negative" ]]; then
       index=$(($RANDOM % ${#NEGATIVE_RESPONSES[@]}))
       element=${NEGATIVE_RESPONSES[$index]}
     else
