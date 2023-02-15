@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # sudofox/shell-mommy.sh
 
-mommy() {
+mommy() (
   MOMMY_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
   # SHELL_MOMMYS_LITTLE - what to call you~ (default: "girl")
@@ -154,4 +154,4 @@ mommy() {
   # TODO: add a way to check if we're running from PROMPT_COMMAND to use the previous exit code instead of doing things this way
   eval "$@" && success || failure
   return $?
-}
+)
