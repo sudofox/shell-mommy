@@ -139,6 +139,10 @@ mommy() {
   }
   failure() {
     local rc=$?
+    if [ $rc -eq 130 ]
+    then
+        return 0
+    fi
     (
       local response="$(pick_response "negative")"
       sub_terms "$response" >&2
