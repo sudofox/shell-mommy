@@ -139,7 +139,7 @@ mommy() {
   }
   failure() {
     local rc=$?
-    if [ $rc -eq 130 ]
+    if [[ $rc -eq 130 ]]
     then
         return 0
     fi
