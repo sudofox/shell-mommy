@@ -1,6 +1,7 @@
 # sudofox/shell-mommy.sh
 
-mommy() {
+mommy() (
+
   # SHELL_MOMMYS_LITTLE - what to call you~ (default: "girl")
   # SHELL_MOMMYS_PRONOUNS - what pronouns mommy will use for themself~ (default: "her")
   # SHELL_MOMMYS_ROLES - what role mommy will have~ (default "mommy")
@@ -139,4 +140,4 @@ you're such a smart cookie~ ❤️"
   # TODO: add a way to check if we're running from PROMPT_COMMAND to use the previous exit code instead of doing things this way
   eval "$@" && success || failure
   return $?
-}
+)
