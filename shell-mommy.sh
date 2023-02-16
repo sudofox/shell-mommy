@@ -2,6 +2,18 @@
 # sudofox/shell-mommy.sh
 
 mommy() (
+  local LEXIT="$?" # Capture Previous Exit Code
+
+  if [[ "$*" =~ \$\(exit\ ([0-9]+)\) ]]; then
+    # Value was $(exit NUM)
+    #  Recommended usage for $PROMPT_COMMAND is
+    #
+    #  export PROMPT_COMMAND="mommy \\$\\(exit \$?\\); $PROMPT_COMMAND"
+    #
+    #  So we can reasonably assume it's being run from $PROMPT_COMMAND"
+    local PROMPTED=1
+  fi
+
   MOMMY_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
   # SHELL_MOMMYS_LITTLE - what to call you~ (default: "girl")
@@ -139,8 +151,7 @@ mommy() (
   }
   failure() {
     local rc=$?
-    if [[ $rc -eq 130 ]]
-    then
+    if [[ "$rc" == "130" ]]; then
         return 0
     fi
     (
@@ -149,9 +160,15 @@ mommy() (
     )
     return $rc
   }
-  # eval is used here to allow for alias resolution
 
-  # TODO: add a way to check if we're running from PROMPT_COMMAND to use the previous exit code instead of doing things this way
-  eval "$@" && success || failure
-  return $?
+  # From PROMPT_COMMAND or not?
+  if [ ! "$PROMPTED" ]; then
+    # eval is used here to allow for alias resolution
+    eval "$@" && success || failure
+    return $?
+  elif [ "$LEXIT" != "130" ]; then
+    [ "$LEXIT" = "0" ] && success || failure
+    return "$LEXIT"
+  fi
+
 )
