@@ -1,4 +1,4 @@
-# sudofox/shell-mommy
+# shell-mommy
 
 Inspired by [Gankra/cargo-mommy](https://github.com/Gankra/cargo-mommy)
 
@@ -13,16 +13,18 @@ I hope this will serve to improve the efficiency of your workflow and general me
 
 ## Installation
 
-To use the `mommy` function, you can source the `shell-mommy.sh` script in your current shell or add it to your `~/.bashrc` file to have it available every time you open a new terminal.
+To use the `mommy` function, you can source the `shell-mommy.sh` script in your current shell or add it to your `~/.zshrc` file to have it available every time you open a new terminal.
 
 ```
 . /path/to/shell-mommy.sh
 ```
 
-If you'd like it to always show a message after each command, you can define a custom `PROMPT_COMMAND` like so:
+If you'd like it to always show a message after each command, you can define a custom precmd hook like so:
 
 ```
-export PROMPT_COMMAND="mommy \\$\\(exit \$?\\); $PROMPT_COMMAND"
+prmptcmd() { mommy }
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd prmptcmd
 ```
 
 ## Configuration
