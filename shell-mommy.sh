@@ -5,7 +5,7 @@ mommy() (
   # SHELL_MOMMYS_LITTLE - what to call you~ (default: "girl")
   # SHELL_MOMMYS_PRONOUNS - what pronouns mommy will use for themself~ (default: "her")
   # SHELL_MOMMYS_ROLES - what role mommy will have~ (default "mommy")
-
+  code=$?
   COLORS_LIGHT_PINK='\e[38;5;217m'
   COLORS_LIGHT_BLUE='\e[38;5;117m'
   COLORS_FAINT='\e[2m'
@@ -136,8 +136,12 @@ you're such a smart cookie~ ❤️"
     return $rc
   }
   # eval is used here to allow for alias resolution
-
-  # TODO: add a way to check if we're running from PROMPT_COMMAND to use the previous exit code instead of doing things this way
-  eval "$@" && success || failure
+  if [ -n "${1}" ]; then
+	  eval "$@" && success || failure
+  elif [ "$code" = 0 ]; then
+	  success
+  else
+	  failure
+  fi
   return $?
 )
