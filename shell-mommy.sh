@@ -16,6 +16,7 @@ mommy() (
   DEF_WORDS_ROLES="mommy"
   DEF_MOMMY_COLOR="${COLORS_LIGHT_PINK}"
   DEF_ONLY_NEGATIVE="false"
+  DEF_FREQUENCY=1 # 1 is ALWAYS; the bigger it is the rarer she posts
 
   NEGATIVE_RESPONSES="do you need MOMMYS_ROLE's help~? ❤️
 Don't give up, my love~ ❤️
@@ -136,6 +137,11 @@ you're such a smart cookie~ ❤️"
     return $rc
   }
   # eval is used here to allow for alias resolution
+  
+  show=$(echo $((RANDOM % $DEF_FREQUENCY)))
+  if [ "$show" != '0' ]; then
+    return 0
+  fi
 
   # TODO: add a way to check if we're running from PROMPT_COMMAND to use the previous exit code instead of doing things this way
   eval "$@" && success || failure
