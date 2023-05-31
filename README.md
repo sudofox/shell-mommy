@@ -25,6 +25,11 @@ If you'd like it to always show a message after each command, you can define a c
 export PROMPT_COMMAND="mommy \\$\\(exit \$?\\); $PROMPT_COMMAND"
 ```
 
+if that doesn't work for you, try:
+```
+export PS1="\$(mommy \$\(exit \$?\))$PS1"
+```
+
 ## Configuration
 
 The `mommy` function has several customizable options that can be set using environment variables:
