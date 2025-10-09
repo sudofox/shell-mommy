@@ -11,13 +11,15 @@ mommy() (
   COLORS_FAINT='\033[2m'              #'\e[2m
   COLORS_RESET='\033[0m'              #'\e[0m
 
-  DEF_WORDS_LITTLE="girl"
-  DEF_WORDS_PRONOUNS="her"
-  DEF_WORDS_ROLES="mommy"
-  DEF_MOMMY_COLOR="${COLORS_LIGHT_PINK}"
-  DEF_ONLY_NEGATIVE="false"
+  # allow for overriding of default words (IF ANY SET)
+  DEF_WORDS_LITTLE="${SHELL_MOMMYS_LITTLE:-girl}"
+  DEF_WORDS_PRONOUNS="${SHELL_MOMMYS_PRONOUNS:-her}"
+  DEF_WORDS_ROLES="${SHELL_MOMMYS_ROLES:-mommy}"
+  DEF_MOMMY_COLOR="${SHELL_MOMMYS_COLOR:-$COLORS_LIGHT_PINK}"
+  DEF_ONLY_NEGATIVE="${SHELL_MOMMYS_ONLY_NEGATIVE:-false}"
 
-  NEGATIVE_RESPONSES="do you need MOMMYS_ROLE's help~? ❤️
+  # if the variable is set for positive/negative responses, overwrite it
+  NEGATIVE_RESPONSES="${SHELL_MOMMYS_POSITIVE_RESPONSES:-do you need MOMMYS_ROLE's help~? ❤️
 Don't give up, my love~ ❤️
 Don't worry, MOMMYS_ROLE is here to help you~ ❤️
 I believe in you, my sweet AFFECTIONATE_TERM~ ❤️
@@ -37,9 +39,8 @@ MOMMYS_ROLE knows you're trying your best~ ❤️
 MOMMYS_ROLE loves you, and is here to support you~ ❤️
 MOMMYS_ROLE still loves you no matter what~ ❤️
 You're doing your best, and that's all that matters to MOMMYS_ROLE~ ❤️
-MOMMYS_ROLE is always here to encourage you~ ❤️"
-
-  POSITIVE_RESPONSES="*pets your head*
+MOMMYS_ROLE is always here to encourage you~ ❤️}"
+  POSITIVE_RESPONSES="${SHELL_MOMMYS_NEGATIVE_RESPONSES:-*pets your head*
 awe, what a good AFFECTIONATE_TERM~\nMOMMYS_ROLE knew you could do it~ ❤️
 good AFFECTIONATE_TERM~\nMOMMYS_ROLE's so proud of you~ ❤️
 Keep up the good work, my love~ ❤️
@@ -51,33 +52,7 @@ MOMMYS_ROLE loves seeing MOMMYS_PRONOUN little AFFECTIONATE_TERM succeed~ ❤️
 MOMMYS_ROLE thinks MOMMYS_PRONOUN little AFFECTIONATE_TERM earned a big hug~ ❤️
 that's a good AFFECTIONATE_TERM~ ❤️
 you did an amazing job, my dear~ ❤️
-you're such a smart cookie~ ❤️"
-
-  # allow for overriding of default words (IF ANY SET)
-
-  if [ -n "$SHELL_MOMMYS_LITTLE" ]; then
-    DEF_WORDS_LITTLE="${SHELL_MOMMYS_LITTLE}"
-  fi
-  if [ -n "$SHELL_MOMMYS_PRONOUNS" ]; then
-    DEF_WORDS_PRONOUNS="${SHELL_MOMMYS_PRONOUNS}"
-  fi
-  if [ -n "$SHELL_MOMMYS_ROLES" ]; then
-    DEF_WORDS_ROLES="${SHELL_MOMMYS_ROLES}"
-  fi
-  if [ -n "$SHELL_MOMMYS_COLOR" ]; then
-    DEF_MOMMY_COLOR="${SHELL_MOMMYS_COLOR}"
-  fi
-  # allow overriding to true
-  if [ "$SHELL_MOMMYS_ONLY_NEGATIVE" = "true" ]; then
-    DEF_ONLY_NEGATIVE="true"
-  fi
-  # if the variable is set for positive/negative responses, overwrite it
-  if [ -n "$SHELL_MOMMYS_POSITIVE_RESPONSES" ]; then
-    POSITIVE_RESPONSES="$SHELL_MOMMYS_POSITIVE_RESPONSES"
-  fi
-  if [ -n "$SHELL_MOMMYS_NEGATIVE_RESPONSES" ]; then
-    NEGATIVE_RESPONSES="$SHELL_MOMMYS_NEGATIVE_RESPONSES"
-  fi
+you're such a smart cookie~ ❤️}"
 
   # split a string on forward slashes and return a random element
   pick_word() {
