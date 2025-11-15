@@ -6,7 +6,7 @@ This is a shell script that provides a `mommy` function which emulates a nurturi
 
 By default, the text will be output in a light pink to stderr. You can change this to a light blue if you find that more encouraging.
 
-<img src="preview.png" alt="Example" ></a>
+<img src="preview.webp" alt="Example" ></a>
 
 
 I hope this will serve to improve the efficiency of your workflow and general mental health. Please use responsibly.
